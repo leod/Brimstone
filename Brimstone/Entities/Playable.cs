@@ -38,7 +38,7 @@ namespace Brimstone.Entities
 				if (!Controller.SufficientResources(this))
 					return false;
 
-				if (Card.RequiresTarget && ValidTargets.Any())
+				if (Card.RequiresTarget && !ValidTargets.Any())
 					return false;
 
 				// TODO: Alot more criteria
