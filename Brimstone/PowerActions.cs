@@ -52,14 +52,11 @@ namespace Brimstone.PowerActions
 
 	public class BlockEnd : PowerAction
 	{
-		public BlockType Type { get; }
-
-		public BlockEnd(BlockType type) : base(-1) {
-			Type = type;
+		public BlockEnd() : base(-1) {
 		}
 
 		public override string ToString() {
-			return "[End] " + Type;
+			return "[End]";
 		}
 	}
 

@@ -222,7 +222,7 @@ namespace Brimstone.Entities
 #if _GAME_DEBUG
 			DebugLog.WriteLine("Game " + GameId + ": Action block " + Block.Type + " for " + Entities[Block.Source].ShortDescription + " resolved");
 #endif
-			PowerHistory?.Add(new BlockEnd(Block.Type));
+			PowerHistory?.Add(new BlockEnd());
 
 			if (Block.Type == BlockType.TRIGGER)
 				ActiveTriggers.TriggerResolved();
@@ -324,7 +324,7 @@ namespace Brimstone.Entities
 				GameWon();
 
 			if (dyingEntities.Count > 0) {
-				PowerHistory?.Add(new BlockEnd(BlockType.DEATHS));
+				PowerHistory?.Add(new BlockEnd());
 			}
 			_deathCheckQueue.Clear();
 		}
