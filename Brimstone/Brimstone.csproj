@@ -75,6 +75,7 @@
     <Compile Include="ActionGraph.cs" />
     <Compile Include="ActionQueue.cs" />
     <Compile Include="ActionResult.cs" />
+    <Compile Include="PowerHistoryImporter.cs" />
     <Compile Include="QueueActions\Core.cs" />
     <Compile Include="QueueActions\Generic.cs" />
     <Compile Include="Comparers.cs" />

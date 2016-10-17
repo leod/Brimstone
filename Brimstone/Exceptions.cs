@@ -80,4 +80,13 @@ namespace Brimstone.Exceptions
 
 		public TriggerException(string message, Exception inner) : base(message, inner) { }
 	}
+
+	public class PowerHistoryImporterException : BrimstoneException
+	{
+		public PowerHistoryImporterException() { }
+
+		public PowerHistoryImporterException(string message) : base(message) { }
+
+		public PowerHistoryImporterException(string message, Exception inner) : base(message, inner) { }
+	}
 }
