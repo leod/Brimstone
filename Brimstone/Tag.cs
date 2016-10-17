@@ -71,7 +71,7 @@ namespace Brimstone
 			return (17 * 31 + (int)Name) * 31 + Value.ToString().GetHashCode();
 		}
 
-		private static Dictionary<GameTag, Type> TypedTags = new Dictionary<GameTag, Type> {
+		public static Dictionary<GameTag, Type> TypedTags = new Dictionary<GameTag, Type> {
 				{ GameTag.STATE, typeof(GameState) },
 				{ GameTag.ZONE, typeof(Zone) },
 				{ GameTag.STEP, typeof(Step) },
