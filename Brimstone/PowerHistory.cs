@@ -27,14 +27,16 @@ namespace Brimstone
 
 		public event EventHandler<PowerActionEventArgs> OnPowerAction;
 
-		public PowerHistory(Game game, Game parent = null) : base(parent?.PowerHistory) {
+		public PowerHistory(Game game = null, Game parent = null) : base(parent?.PowerHistory) {
 			Game = game;
 			OrderedHash = parent?.PowerHistory.OrderedHash ?? 17;
 			UnorderedHash = parent?.PowerHistory.UnorderedHash ?? 0;
 
 			// Subscribe to game events
-			Game.OnEntityCreated += (g, e) => Add(new CreateEntity(e));
-			Game.OnEntityChanged += (g, e, t, o, n) => Add(new TagChange(e, t, n));
+			if (Game != null) {
+				Game.OnEntityCreated += (g, e) => Add(new CreateEntity(e));
+				Game.OnEntityChanged += (g, e, t, o, n) => Add(new TagChange(e, t, n));
+			}
 		}
 
 		public void Add(PowerAction a) {
