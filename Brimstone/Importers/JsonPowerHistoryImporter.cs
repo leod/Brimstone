@@ -6,13 +6,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Brimstone.PowerActions;
 
-namespace Brimstone
+namespace Brimstone.Importers
 {
-	public interface IPowerHistoryImporter
-	{
-		PowerHistory Import(StreamReader stream);
-	}
-
 	public class JsonPowerHistoryImporter : IPowerHistoryImporter
 	{
 		public PowerHistory Import(StreamReader stream) {
