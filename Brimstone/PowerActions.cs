@@ -52,8 +52,7 @@ namespace Brimstone.PowerActions
 
 	public class BlockEnd : PowerAction
 	{
-		public BlockEnd() : base(-1) {
-		}
+		public BlockEnd() : base(-1) {}
 
 		public override string ToString() {
 			return "[End]";
