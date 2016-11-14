@@ -5,6 +5,7 @@ namespace Brimstone.Importers
 {
 	public interface IPowerHistoryImporter
 	{
-		PowerHistory Import(StreamReader stream);
+		PowerHistory ImportFirst(StreamReader stream);
+		IEnumerable<PowerHistory> Import(StreamReader stream);
 	}
 }

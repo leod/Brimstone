@@ -10,12 +10,15 @@ namespace Brimstone.Importers
 {
 	public class JsonPowerHistoryImporter : IPowerHistoryImporter
 	{
-		public PowerHistory Import(StreamReader stream) {
+		public PowerHistory ImportFirst(StreamReader stream) {
+			return Import(stream).First();
+		}
+
+		public IEnumerable<PowerHistory> Import(StreamReader stream) {
 			using (JsonTextReader reader = new JsonTextReader(stream)) {
 				var logs = JArray.Load(reader);
 
-				// A log file can contain multiple games. For now, read only the first game
-				return importPowerHistory((JArray)logs[0]);
+				return logs.Select(x => importPowerHistory((JArray)x));
 			}
 		}
 
