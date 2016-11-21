@@ -8,13 +8,13 @@ using Brimstone.PowerActions;
 
 namespace Brimstone.Importers
 {
-	public class JsonPowerHistoryImporter : IPowerHistoryImporter
+	public class JsonPowerHistoryImporter : PowerHistoryImporter<JsonPowerHistoryImporter>
 	{
-		public PowerHistory ImportFirst(StreamReader stream) {
+		public override PowerHistory ImportFirst(StreamReader stream) {
 			return Import(stream).First();
 		}
 
-		public IEnumerable<PowerHistory> Import(StreamReader stream) {
+		public override IEnumerable<PowerHistory> Import(StreamReader stream) {
 			using (JsonTextReader reader = new JsonTextReader(stream)) {
 				var logs = JArray.Load(reader);
 

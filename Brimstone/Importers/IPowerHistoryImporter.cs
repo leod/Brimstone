@@ -9,18 +9,35 @@ namespace Brimstone.Importers
 		IEnumerable<PowerHistory> Import(StreamReader stream);
 	}
 
-	public static class PowerHistoryImporterExtensions
+	public abstract class PowerHistoryImporter<T> : IPowerHistoryImporter where T : PowerHistoryImporter<T>, new()
 	{
-		public static PowerHistory ImportFirst(this IPowerHistoryImporter importer, string filename) {
-			using (StreamReader stream = new StreamReader(filename)) {
-				return importer.ImportFirst(stream);
-			}
+		public abstract PowerHistory ImportFirst(StreamReader stream);
+		public abstract IEnumerable<PowerHistory> Import(StreamReader stream);
+
+		public PowerHistory ImportFirst(string filename) {
+			using (StreamReader stream = new StreamReader(filename))
+				return ImportFirst(stream);
 		}
 
-		public static IEnumerable<PowerHistory> Import(this IPowerHistoryImporter importer, string filename) {
-			using (StreamReader stream = new StreamReader(filename)) {
-				return importer.Import(stream);
-			}
+		public IEnumerable<PowerHistory> Import(string filename) {
+			using (StreamReader stream = new StreamReader(filename))
+				return Import(stream);
+		}
+
+		public static PowerHistory ImportFirstFrom(StreamReader stream) {
+			return new T().ImportFirst(stream);
+		}
+
+		public static PowerHistory ImportFirstFrom(string filename) {
+			return new T().ImportFirst(filename);
+		}
+
+		public static IEnumerable<PowerHistory> ImportFrom(StreamReader stream) {
+			return new T().Import(stream);
+		}
+
+		public static IEnumerable<PowerHistory> ImportFrom(string filename) {
+			return new T().Import(filename);
 		}
 	}
 }
